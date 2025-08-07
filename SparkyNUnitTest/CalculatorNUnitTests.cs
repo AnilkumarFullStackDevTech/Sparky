@@ -50,5 +50,29 @@ namespace Sparky
             Assert.That(isOdd, Is.EqualTo(true));
             Assert.IsTrue(isOdd);
         }
+        [Test]
+        [TestCase(10, ExpectedResult = false)]
+        [TestCase(11, ExpectedResult = true)]
+        public bool IsOddChecker_InputNumber_ReturnTrueIfOdd(int a)
+        {
+            Calculator calc = new();
+            return calc.IsOddNumber(a);
+
+        }
+        [Test]
+        [TestCase(5.4, 10.5)] //15.6
+        [TestCase(5.43, 10.53)]//15.96
+        [TestCase(5.49, 10.59)]//16.08
+        public void AddNumbersDouble_InputTwoDouble_GetCorrectAddition(double a, double b)
+        {
+            //Arrange
+            Calculator calc = new();
+
+            //Act
+            double result = calc.AddNumber(a, b);
+
+            //Assert
+            Assert.AreEqual(15.9, result,.2);
+        }
     }
 }
